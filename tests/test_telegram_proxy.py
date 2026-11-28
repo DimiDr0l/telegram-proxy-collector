@@ -1,7 +1,6 @@
 import base64
 import hashlib
 import hmac
-import json
 import socket
 import struct
 from argparse import Namespace
@@ -140,21 +139,8 @@ def test_collector_requires_protocol_check_after_tcp_ping():
     with patch('main.socket.create_connection'), patch('main.check_telegram_proxy', side_effect=[False, True]) as check:
         assert main.check_proxy_tcp(proxy, 2) is None
         result = main.check_proxy_tcp(proxy, 2)
-        assert result['method'] == 'TELEGRAM_OK'
         assert result['link'] == 'tg://socks?server=proxy.example&port=1080&user=u%40&pass=p%21'
         check.assert_called_with('proxy.example', 1080, 2, secret=None, credentials=('u@', 'p!'))
-
-
-def test_seen_cache_requires_telegram_verification_method():
-    entry = ('mtproto', 'proxy.example', 443, KEY.hex())
-    with TemporaryDirectory() as tmp:
-        path = Path(tmp) / 'seen.json'
-        main.save_seen(str(path), {entry})
-        assert main.load_seen(str(path)) == {entry}
-        data = json.loads(path.read_text())
-        del data['method']
-        path.write_text(json.dumps(data))
-        assert main.load_seen(str(path)) == set()
 
 
 def test_run_replaces_previous_list_when_no_proxy_passes():
@@ -162,15 +148,59 @@ def test_run_replaces_previous_list_when_no_proxy_passes():
     links = [f'tg://proxy?server={host}&port=443&secret={KEY.hex()}' for host in hosts]
     with TemporaryDirectory() as tmp:
         output = Path(tmp) / 'verified'
-        args = Namespace(geoip=None, output_dir=str(output), manual=None, seen_file=None,
-                         seen_ttl=0, max_check=0, dry_run=False, workers=1, timeout=2, top=0)
-        with patch.multiple(main, SOURCES=[], SOCKS_SOURCES=[], MANUAL_PROXIES=links,
-                            HISTORY_FILE=str(Path(tmp) / 'history.json')), patch('main.socket.create_connection'):
+        args = Namespace(geoip=None, output_dir=str(output), manual=None,
+                         max_check=0, dry_run=False, workers=1, timeout=2, top=0)
+        with patch.multiple(main, SOURCES=[], SOCKS_SOURCES=[], MANUAL_PROXIES=links), \
+                patch('main.socket.create_connection'):
             for passing_hosts in ({hosts[0]}, set()):
                 with patch('main.check_telegram_proxy', side_effect=lambda host, *a, **kw: host in passing_hosts):
                     main.run(args)
-                records = json.loads((output / 'proxy_all_verified.json').read_text())
-                assert {record['host'] for record in records} == passing_hosts
-                assert all(record['method'] == 'TELEGRAM_OK' for record in records)
-                saved = (output / 'proxy_all.txt').read_text().splitlines()
+                saved = (output / 'proxy_all_verified.txt').read_text().splitlines()
                 assert [line for line in saved if line.startswith('tg://')] == (links[:1] if passing_hosts else [])
+                assert {path.suffix for path in output.iterdir()} == {'.txt', '.log'}
+
+
+def test_skip_socks_filters_all_inputs_and_replaces_previous_report():
+    mixed_source = 'https://lists.example/mixed.txt'
+    socks_source = 'https://lists.example/socks.txt'
+    mtproto = f'tg://proxy?server=mtproto.example&port=443&secret={KEY.hex()}'
+    mixed_text = f'{mtproto}\nsocks5://192.0.2.10:443:{KEY.hex()}'
+    built_in = 'tg://socks?server=built-in.example&port=1080'
+    local_link = 'socks5://local.example:1080'
+
+    with TemporaryDirectory() as tmp:
+        output = Path(tmp) / 'verified'
+        manual = Path(tmp) / 'manual.txt'
+        manual.write_text(local_link)
+        sources = {mixed_source: mixed_text, socks_source: 'socks5://dedicated.example:1080'}
+        argv = ['main.py', '--output-dir', str(output), '--manual', str(manual), '--workers', '1']
+        with patch.multiple(main, SOURCES=[mixed_source], SOCKS_SOURCES=[socks_source],
+                            MANUAL_PROXIES=[built_in]), \
+                patch('main.fetch_source', side_effect=lambda session, url: sources[url]) as fetch, \
+                patch('main.socket.create_connection') as connect, \
+                patch('main.check_telegram_proxy', return_value=True):
+            with patch('sys.argv', argv):
+                main.main()
+            socks_list = output / 'socks5_proxies.txt'
+            assert built_in in socks_list.read_text()
+
+            fetch.reset_mock()
+            connect.reset_mock()
+            with patch('sys.argv', argv + ['--skip-socks']):
+                main.main()
+            assert [call.args[1] for call in fetch.call_args_list] == [mixed_source]
+            connect.assert_called_once_with(('mtproto.example', 443), timeout=2.0)
+            verified_list = output / 'proxy_all_verified.txt'
+            assert [line for line in verified_list.read_text().splitlines() if line.startswith('tg://')] == [mtproto]
+            assert 'tg://socks' not in socks_list.read_text()
+            report = (output / 'verification.log').read_text().splitlines()
+            assert 'Total proxies checked: 1' in report
+            assert 'Valid proxies found: 1' in report
+            assert 'Manual proxies: 0' in report
+
+            sources[mixed_source] = mixed_text.splitlines()[1]
+            connect.reset_mock()
+            with patch('sys.argv', argv + ['--skip-socks']):
+                main.main()
+            connect.assert_not_called()
+            assert 'tg://' not in verified_list.read_text()

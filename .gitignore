@@ -10,16 +10,10 @@ __pycache__/
 test_*
 channel_reader_session*
 
-# AI models and data
-models/*.pkl
-models/*.joblib
+# Local data
 data/*.csv
 data/*.json
 data/*.mmdb
-!data/proxy_history.json
-!data/analytics_report.json
-reports/*.json
-!reports/analytics_report.json
 
 # IDE
 .vscode/
@@ -58,8 +52,6 @@ tcp16.json
 !.github/
 !README.md
 !main.py
-!analytics.py
-!ai_analytics.py
 !mobile.html
 !index.html
 !LICENSE
