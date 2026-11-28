@@ -221,12 +221,13 @@ def _geo_country(address: str) -> Optional[Tuple[str, str]]:
 def get_proxies_from_text(text: str, *, include_socks: bool = True) -> Set[Tuple[str, str, int, Any]]:
     proxies = set()
     mtproto_ips = set()
+    link_text = text.replace('&amp;', '&')
 
     for pattern, flags in MTPROTO_PATTERNS:
-        for h, p, s in re.findall(pattern, text, flags):
+        for h, p, s in re.findall(pattern, link_text, flags):
             if _valid_port(p):
                 proxies.add(('mtproto', h, int(p), s)); mtproto_ips.add((h, int(p)))
-    for h, p, u, pw in re.findall(r'tg://socks\?server=([^&\s]+)&port=(\d+)(?:&(?:user|username)=([^&\s]*))?(?:&(?:pass|password)=([^&\s]*))?', text, re.I):
+    for h, p, u, pw in re.findall(r'tg://socks\?server=([^&\s]+)&port=(\d+)(?:&(?:user|username)=([^&\s]*))?(?:&(?:pass|password)=([^&\s]*))?', link_text, re.I):
         if _valid_port(p):
             proxies.add(('socks5', h, int(p), (unquote(u) if u else None, unquote(pw) if pw else None)))
     for u, pw, h, p in re.findall(r'socks5://(?:([^:@]+):([^@]+)@)?([A-Za-z0-9\.-]+):(\d+)', text, re.I):

@@ -131,6 +131,16 @@ def test_socks5_requires_connect_to_telegram_and_supports_authentication():
     assert _probe(lambda sock: _socks_server(sock, authenticated=True, allow_connect=True), credentials=('u@', 'p!'))
 
 
+def test_collector_parses_html_escaped_proxy_links():
+    mtproto = f'https://t.me/proxy?server=proxy.example.&port=443&secret={KEY.hex()}'
+    socks = 'tg://socks?server=socks.example&port=1080&user=u%40&pass=p%21'
+    source = '\n'.join((mtproto, mtproto.replace('&', '&amp;'), socks.replace('&', '&amp;')))
+    assert main.get_proxies_from_text(source) == {
+        ('mtproto', 'proxy.example.', 443, KEY.hex()),
+        ('socks5', 'socks.example', 1080, ('u@', 'p!')),
+    }
+
+
 def test_collector_requires_protocol_check_after_tcp_ping():
     proxy, = main.get_proxies_from_text('tg://socks?server=proxy.example&port=1080&user=u%40&pass=p%21')
     with patch('main.socket.create_connection', side_effect=TimeoutError), patch('main.check_telegram_proxy') as check:
