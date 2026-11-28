@@ -10,6 +10,7 @@ if [[ -z "$branch" ]] ||
     printf '%s\n' 'Настройте upstream для текущей ветки Git.' >&2
     exit 1
 fi
+git pull
 
 python_bin=python3
 if [[ -x .venv/bin/python ]]; then
