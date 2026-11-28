@@ -1,108 +1,104 @@
 # Проверенные прокси Telegram
 
-Проверено 2026-11-28 08:27:30 UTC
+Проверено 2026-11-28 08:50:56 UTC
 
 ## ФРГ (DE)
 
 | Подключиться | Протокол | Ответ Telegram, мс |
 | --- | --- | ---: |
-| [opss.anotelinopalk.co.uk:8880](https://t.me/proxy?server=opss.anotelinopalk.co.uk&port=8880&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 99 |
-| [resturant.zereshkpolo.info.:7799](https://t.me/proxy?server=resturant.zereshkpolo.info.&port=7799&secret=dd10400103324995b07c030386e886e7f1) | MTProto | 105 |
-| [a5.anotelinopalk.co.uk:8880](https://t.me/proxy?server=a5.anotelinopalk.co.uk&port=8880&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 112 |
-| [My.fastprx.co.uk:2052](https://t.me/proxy?server=My.fastprx.co.uk&port=2052&secret=aea1191522c9b281d2633610a34e730d) | MTProto | 112 |
-| [my.fastprx.co.uk:2052](https://t.me/proxy?server=my.fastprx.co.uk&port=2052&secret=aea1191522c9b281d2633610a34e730d) | MTProto | 114 |
-| [khune.ir.bcsadwtgd.info.:7443](https://t.me/proxy?server=khune.ir.bcsadwtgd.info.&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 115 |
-| [avangard.pareporeh.info:5500](https://t.me/proxy?server=avangard.pareporeh.info&port=5500&secret=ec742282124f04d318551341ead76457) | MTProto | 116 |
-| [persian.gulf.ir.bcsadwtgd.info:7443](https://t.me/proxy?server=persian.gulf.ir.bcsadwtgd.info&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 118 |
-| [a2.anotelinopalk.co.uk:8880](https://t.me/proxy?server=a2.anotelinopalk.co.uk&port=8880&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 118 |
-| [my.home.ir.bcsadwtgd.info.:7443](https://t.me/proxy?server=my.home.ir.bcsadwtgd.info.&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 121 |
-| [ir-ir.mhanna.info:3443](https://t.me/proxy?server=ir-ir.mhanna.info&port=3443&secret=104462821249bd7ac519130220c8dd09) | MTProto | 122 |
-| [masachoset.rah-toro-mikhanad.info:9988](https://t.me/proxy?server=masachoset.rah-toro-mikhanad.info&port=9988&secret=e8742282124f08d358551341ead76402) | MTProto | 124 |
-| [maman.ir.osahflahyev.info:7443](https://t.me/proxy?server=maman.ir.osahflahyev.info&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 125 |
-| [maman.ir.osahflahyev.info:7443](https://t.me/proxy?server=maman.ir.osahflahyev.info&port=7443&secret=79e344818749bd7ac519130220c25d09) | MTProto | 129 |
-| [radical.pushinero.info:5500](https://t.me/proxy?server=radical.pushinero.info&port=5500&secret=d88db99ee3721f0fcb40a4ff63b5cd28) | MTProto | 130 |
-| [a1.anotelinopalk.co.uk:8880](https://t.me/proxy?server=a1.anotelinopalk.co.uk&port=8880&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 131 |
-| [kaktos.mrdatac.ir:5500](https://t.me/proxy?server=kaktos.mrdatac.ir&port=5500&secret=e8742282124f08d358551341ead76402) | MTProto | 132 |
-| [ariobarzanes.ir.igakwvwa.info:7443](https://t.me/proxy?server=ariobarzanes.ir.igakwvwa.info&port=7443&secret=79e344818749bd7ac519130220c25d09) | MTProto | 135 |
-| [baba.ir.osahflahyev.info.:7443](https://t.me/proxy?server=baba.ir.osahflahyev.info.&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 141 |
-| [philadelphia.hezarto.info:5500](https://t.me/proxy?server=philadelphia.hezarto.info&port=5500&secret=ec742282124f04d318551341ead76457) | MTProto | 159 |
-| [for.dear-iranian-people.com.heazshddd.info:88](https://t.me/proxy?server=for.dear-iranian-people.com.heazshddd.info&port=88&secret=ee0000f00f0f775555fffffff5006e2e696d656469612e737465616d706f77657265642e636f6d) | MTProto | 177 |
-| [philadelphia.hezarto.info.:5500](https://t.me/proxy?server=philadelphia.hezarto.info.&port=5500&secret=7HQighJPBNMYVRNB6tdkVw) | MTProto | 179 |
-| [junior.ir.the-nice-mtproto.info:88](https://t.me/proxy?server=junior.ir.the-nice-mtproto.info&port=88&secret=ee0000f00f0f775555fffffff5006e2e696d656469612e737465616d706f77657265642e636f6d) | MTProto | 180 |
-| [iran.yes.ir.bcsadwtgd.info:7443](https://t.me/proxy?server=iran.yes.ir.bcsadwtgd.info&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 191 |
-| [For.dear-iranian-people.com.heazshddd.info.:88](https://t.me/proxy?server=For.dear-iranian-people.com.heazshddd.info.&port=88&secret=ee0000f00f0f775555fffffff5006e2e696d656469612e737465616d706f77657265642e636f6d) | MTProto | 196 |
-| [always.for.you.ir.mausjakaqd.info:88](https://t.me/proxy?server=always.for.you.ir.mausjakaqd.info&port=88&secret=ee0000f00f0f775555fffffff5006e2e697374617469632e666172616b61762e636f6d) | MTProto | 199 |
-| [we.are.iran.ir.abcyrajslklhga.info:88](https://t.me/proxy?server=we.are.iran.ir.abcyrajslklhga.info&port=88&secret=ee0000f00f0f775555fffffff5006e2e69626973636f7474692e79656b74616e65742e636f6d) | MTProto | 200 |
-| [professor.hasratepaeiz.website.:7070](https://t.me/proxy?server=professor.hasratepaeiz.website.&port=7070&secret=iORid5lJ237IiBMGYMQMdw) | MTProto | 236 |
-| [naturalistic.receptacle.sternutator.teleseryetvreplay.com:443](https://t.me/proxy?server=naturalistic.receptacle.sternutator.teleseryetvreplay.com&port=443&secret=eeb66c9ff483d807e9f811a41f31dd0b59647a656e2e7275) | MTProto | 254 |
-| [rostam.ir.igakwvwa.info.:7443](https://t.me/proxy?server=rostam.ir.igakwvwa.info.&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 324 |
-| [best.ir.agrescjarkahdgs.info:88](https://t.me/proxy?server=best.ir.agrescjarkahdgs.info&port=88&secret=ee0000f00f0f775555fffffff5006e2e6961626364656667682e696a) | MTProto | 1179 |
-| [full-vasl.ir-xyz.gdhbvjshjrf.info:88](https://t.me/proxy?server=full-vasl.ir-xyz.gdhbvjshjrf.info&port=88&secret=ee0000f00f0f775555fffffff5006e2e696d656469612e737465616d706f77657265642e636f6d) | MTProto | 1539 |
+| [My.fastprx.co.uk:2052](tg://proxy?server=My.fastprx.co.uk&port=2052&secret=aea1191522c9b281d2633610a34e730d) | MTProto | 110 |
+| [radical.pushinero.info:5500](tg://proxy?server=radical.pushinero.info&port=5500&secret=d88db99ee3721f0fcb40a4ff63b5cd28) | MTProto | 110 |
+| [professor.hasratepaeiz.website:7070](tg://proxy?server=professor.hasratepaeiz.website&port=7070&secret=88e462779949db7ec888130660c40c77) | MTProto | 113 |
+| [a5.anotelinopalk.co.uk:8880](tg://proxy?server=a5.anotelinopalk.co.uk&port=8880&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 115 |
+| [a3.anotelinopalk.co.uk:8880](tg://proxy?server=a3.anotelinopalk.co.uk&port=8880&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 116 |
+| [a1.anotelinopalk.co.uk:8880](tg://proxy?server=a1.anotelinopalk.co.uk&port=8880&secret=79e344818749bd7ac519130220c25d09) | MTProto | 117 |
+| [ir-ir.mhanna.info:3443](tg://proxy?server=ir-ir.mhanna.info&port=3443&secret=104462821249bd7ac519130220c8dd09) | MTProto | 119 |
+| [maman.ir.osahflahyev.info:7443](tg://proxy?server=maman.ir.osahflahyev.info&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 121 |
+| [ariobarzanes.ir.igakwvwa.info:7443](tg://proxy?server=ariobarzanes.ir.igakwvwa.info&port=7443&secret=79e344818749bd7ac519130220c25d09) | MTProto | 121 |
+| [benze-benz.ir.osahflahyev.info:7443](tg://proxy?server=benze-benz.ir.osahflahyev.info&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 122 |
+| [Strait-of-Hormuz.ir.bcsadwtgd.info:7443](tg://proxy?server=Strait-of-Hormuz.ir.bcsadwtgd.info&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 122 |
+| [philadelphia.hezarto.info:5500](tg://proxy?server=philadelphia.hezarto.info&port=5500&secret=ec742282124f04d318551341ead76457) | MTProto | 123 |
+| [web.cocorichmond.site:8880](tg://proxy?server=web.cocorichmond.site&port=8880&secret=e8742282124f08d358551341ead76402) | MTProto | 123 |
+| [Pasargad.ir.bcsadwtgd.info.:7443](tg://proxy?server=Pasargad.ir.bcsadwtgd.info.&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 123 |
+| [benze-benz.ir.osahflahyev.info:7443](tg://proxy?server=benze-benz.ir.osahflahyev.info&port=7443&secret=79e344818749bd7ac519130220c25d09) | MTProto | 125 |
+| [persian.gulf.ir.bcsadwtgd.info:7443](tg://proxy?server=persian.gulf.ir.bcsadwtgd.info&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 126 |
+| [iran.mother.ir.jetish.info.:7443](tg://proxy?server=iran.mother.ir.jetish.info.&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 127 |
+| [a1.anotelinopalk.co.uk:8880](tg://proxy?server=a1.anotelinopalk.co.uk&port=8880&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 128 |
+| [my.fastprx.co.uk:2052](tg://proxy?server=my.fastprx.co.uk&port=2052&secret=aea1191522c9b281d2633610a34e730d) | MTProto | 130 |
+| [maman.ir.osahflahyev.info:7443](tg://proxy?server=maman.ir.osahflahyev.info&port=7443&secret=79e344818749bd7ac519130220c25d09) | MTProto | 131 |
+| [dl3.soft98.net:2053](tg://proxy?server=dl3.soft98.net&port=2053&secret=ee277b571aff100fbafc2e3efebac80b2b736f667439382e6972) | MTProto | 156 |
+| [Rakhsh.ir.igakwvwa.info.:7443](tg://proxy?server=Rakhsh.ir.igakwvwa.info.&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 159 |
+| [turbo-jet.balestic.ir.ghsisncbv.info:88](tg://proxy?server=turbo-jet.balestic.ir.ghsisncbv.info&port=88&secret=ee0000f00f0f775555fffffff5006e2e69626973636f7474692e79656b74616e65742e636f6d) | MTProto | 173 |
+| [stand-for-iran.ir.mausjakaqd.info:88](tg://proxy?server=stand-for-iran.ir.mausjakaqd.info&port=88&secret=ee0000f00f0f775555fffffff5006e2e696d656469612e737465616d706f77657265642e636f6d) | MTProto | 173 |
+| [full-vasl.ir-xyz.gdhbvjshjrf.info:88](tg://proxy?server=full-vasl.ir-xyz.gdhbvjshjrf.info&port=88&secret=ee0000f00f0f775555fffffff5006e2e69626973636f7474692e79656b74616e65742e636f6d) | MTProto | 186 |
+| [telegram.best.ir.heazshddd.info:88](tg://proxy?server=telegram.best.ir.heazshddd.info&port=88&secret=ee0000f00f0f775555fffffff5006e2e696d656469612e737465616d706f77657265642e636f6d) | MTProto | 187 |
+| [strait-of-hormuz.ir.jursdheks.info:88](tg://proxy?server=strait-of-hormuz.ir.jursdheks.info&port=88&secret=ee0000f00f0f775555fffffff5006e2e69626973636f7474692e79656b74616e65742e636f6d) | MTProto | 187 |
+| [new-for-you.ir.hohoshshs.info:88](tg://proxy?server=new-for-you.ir.hohoshshs.info&port=88&secret=ee0000f00f0f775555fffffff5006e2e696d656469612e737465616d706f77657265642e636f6d) | MTProto | 193 |
+| [persian.gulf.ir.olsjddhf.info:88](tg://proxy?server=persian.gulf.ir.olsjddhf.info&port=88&secret=ee0000f00f0f775555fffffff5006e2e696d656469612e737465616d706f77657265642e636f6d) | MTProto | 194 |
+| [milion.users.ir.bishdhaep.info:88](tg://proxy?server=milion.users.ir.bishdhaep.info&port=88&secret=ee0000f00f0f775555fffffff5006e2e69626973636f7474692e79656b74616e65742e636f6d) | MTProto | 194 |
+| [iran.mother.ir.jetish.info:88](tg://proxy?server=iran.mother.ir.jetish.info&port=88&secret=ee0000f00f0f775555fffffff5006e2e696d656469612e737465616d706f77657265642e636f6d) | MTProto | 476 |
+| [baba.ir.osahflahyev.info.:7443](tg://proxy?server=baba.ir.osahflahyev.info.&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 854 |
+| [Pooriyaye-vali.ir.igakwvwa.info.:7443](tg://proxy?server=Pooriyaye-vali.ir.igakwvwa.info.&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 963 |
+| [Yaghoub.Leys.Safari.ir.igakwvwa.info:7443](tg://proxy?server=Yaghoub.Leys.Safari.ir.igakwvwa.info&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 1582 |
 
-## Франция (FR)
+## Испания (ES)
 
 | Подключиться | Протокол | Ответ Telegram, мс |
 | --- | --- | ---: |
-| [n78dcf0.tidalcache.com:443](https://t.me/proxy?server=n78dcf0.tidalcache.com&port=443&secret=ee5c89ab20266ce759f96a0745b63d7cdf656467652e746964616c63616368652e636f6d) | MTProto | 210 |
+| [yastatic.co.uk:443](tg://proxy?server=yastatic.co.uk&port=443&secret=ee4d529b445ca1cfa716b340ef99877570727a796d68702e79617374617469632e6e6574) | MTProto | 264 |
+
+## Финляндия (FI)
+
+| Подключиться | Протокол | Ответ Telegram, мс |
+| --- | --- | ---: |
+| [its.fastprx.co.uk:2086](tg://proxy?server=its.fastprx.co.uk&port=2086&secret=d2289d65c760a8245e24ffc2e3a3ba27) | MTProto | 129 |
 
 ## Израиль (IL)
 
 | Подключиться | Протокол | Ответ Telegram, мс |
 | --- | --- | ---: |
-| [nemazo76.larchmere.xyz:443](https://t.me/proxy?server=nemazo76.larchmere.xyz&port=443&secret=ee44f33295547b09ac13649a4c51c296f6706574726f766963682e7275) | MTProto | 252 |
-| [suka90.mossharbor.xyz:443](https://t.me/proxy?server=suka90.mossharbor.xyz&port=443&secret=ee33e69fd218748e738b564b82cabecf47786170692e6f7a6f6e2e7275) | MTProto | 262 |
-| [losuny65.quietfjord.click:443](https://t.me/proxy?server=losuny65.quietfjord.click&port=443&secret=ee214011ba04108a7b1836df3a5e918b3b786170692e6f7a6f6e2e7275) | MTProto | 264 |
-| [gardenkite.heronglade.space:443](https://t.me/proxy?server=gardenkite.heronglade.space&port=443&secret=ee4b20619b99880640b45f275c18e20555706574726f766963682e7275) | MTProto | 266 |
-| [raleto69.fernlark.xyz:443](https://t.me/proxy?server=raleto69.fernlark.xyz&port=443&secret=ee8ac4f89d6036e07f6ff9e00b1699819e706574726f766963682e7275) | MTProto | 268 |
-| [kite.heronglade.space:443](https://t.me/proxy?server=kite.heronglade.space&port=443&secret=eef34d88320a4d0b6e8aaf11541681dd7c706574726f766963682e7275) | MTProto | 294 |
-
-## Люксембург (LU)
-
-| Подключиться | Протокол | Ответ Telegram, мс |
-| --- | --- | ---: |
-| [t3.myrka.digital:444](https://t.me/proxy?server=t3.myrka.digital&port=444&secret=ee8888777766665555444433332222111174332e6d79726b612e6469676974616c) | MTProto | 279 |
-| [4x4.subaru-volga.com:443](https://t.me/proxy?server=4x4.subaru-volga.com&port=443&secret=ee54701e1686de96a44721501a7bee9e4c6c796e657474652e6d79726b612e6469676974616c) | MTProto | 286 |
-| [parts.kemerovo.online:443](https://t.me/proxy?server=parts.kemerovo.online&port=443&secret=ee1111222233334444555566667777888874342e6d79726b612e6469676974616c) | MTProto | 296 |
-| [static.b-telega.shop:443](https://t.me/proxy?server=static.b-telega.shop&port=443&secret=ee9a3f90be73d8392fd072f9860a2699de7374617469632e622d74656c6567612e73686f70) | MTProto | 432 |
+| [vimika15.tidelark.cc:443](tg://proxy?server=vimika15.tidelark.cc&port=443&secret=ee4abe44348ba405ac59448f7f9fe6353c706574726f766963682e7275) | MTProto | 252 |
+| [kavima49.mosswren.vip:443](tg://proxy?server=kavima49.mosswren.vip&port=443&secret=ee6ce7aa9636179a5f67366aaab4702a266b6176696d6134392e6d6f73737772656e2e766970) | MTProto | 309 |
 
 ## Нидерланды (NL)
 
 | Подключиться | Протокол | Ответ Telegram, мс |
 | --- | --- | ---: |
-| [79.137.196.223:15443](https://t.me/proxy?server=79.137.196.223&port=15443&secret=ee5d739d0cab70b86961816e3a9c27d4c17777772e636c6f7564666c6172652e636f6d) | MTProto | 173 |
-| [79.137.196.223:13443](https://t.me/proxy?server=79.137.196.223&port=13443&secret=eee06596f5753c0dc9b56fe4864a4665e57777772e636c6f7564666c6172652e636f6d) | MTProto | 173 |
-| [79.137.196.223:12443](https://t.me/proxy?server=79.137.196.223&port=12443&secret=eebc63866dd7a052dbd741a691486a82127777772e636c6f7564666c6172652e636f6d) | MTProto | 177 |
-| [79.137.196.223:20443](https://t.me/proxy?server=79.137.196.223&port=20443&secret=ee19cebd24e6780701cc9839053c6da7677777772e636c6f7564666c6172652e636f6d) | MTProto | 183 |
+| [79.137.196.223:4443](tg://proxy?server=79.137.196.223&port=4443&secret=eeee4026e99e99216664b0cb156da676d7707777772e636c6f7564666c6172652e636f6d) | MTProto | 165 |
+| [79.137.196.223:13443](tg://proxy?server=79.137.196.223&port=13443&secret=eee06596f5753c0dc9b56fe4864a4665e57777772e636c6f7564666c6172652e636f6d) | MTProto | 168 |
+| [79.137.196.223:12443](tg://proxy?server=79.137.196.223&port=12443&secret=eebc63866dd7a052dbd741a691486a82127777772e636c6f7564666c6172652e636f6d) | MTProto | 172 |
+| [79.137.196.223:11443](tg://proxy?server=79.137.196.223&port=11443&secret=ee8a160975fad14b21992a65e0db4b7cfa7777772e636c6f7564666c6172652e636f6d) | MTProto | 172 |
+| [79.137.196.223:17443](tg://proxy?server=79.137.196.223&port=17443&secret=ee619628651747706ea93bfbd344ba3fc17777772e636c6f7564666c6172652e636f6d) | MTProto | 172 |
+| [79.137.196.223:18443](tg://proxy?server=79.137.196.223&port=18443&secret=eefd7ec32323aa5b4fc5cdd6b7dd28836a7777772e636c6f7564666c6172652e636f6d) | MTProto | 173 |
+| [79.137.196.223:19443](tg://proxy?server=79.137.196.223&port=19443&secret=ee34faea79631cc8b7b884a3d513857e7b7777772e636c6f7564666c6172652e636f6d) | MTProto | 179 |
+| [79.137.196.223:10443](tg://proxy?server=79.137.196.223&port=10443&secret=ee63fccdeb9951e5f99d66d274148278b97777772e636c6f7564666c6172652e636f6d) | MTProto | 180 |
+| [79.137.196.223:9443](tg://proxy?server=79.137.196.223&port=9443&secret=eeeed3431eaef666469f9beb5286a544d96f7777772e636c6f7564666c6172652e636f6d) | MTProto | 193 |
+
+## Польша (PL)
+
+| Подключиться | Протокол | Ответ Telegram, мс |
+| --- | --- | ---: |
+| [redflag.yazaebalsyadelatproxy.uk:443](tg://proxy?server=redflag.yazaebalsyadelatproxy.uk&port=443&secret=ee69e899d89ec68e220ca177557322b27f726564666c61672e79617a616562616c73796164656c617470726f78792e6363) | MTProto | 251 |
 
 ## Россия (RU)
 
 | Подключиться | Протокол | Ответ Telegram, мс |
 | --- | --- | ---: |
-| [nyakawai.shop:443](https://t.me/proxy?server=nyakawai.shop&port=443&secret=eeec15a78c3842e866c302c8526175a68c7975672d6c696e6b2e7275) | MTProto | 966 |
+| [storagexx.space:443](tg://proxy?server=storagexx.space&port=443&secret=ee24b61556a3ec49bc0c7a5a7e8525702873746f7261676578782e7370616365) | MTProto | 208 |
+
+## Швеция (SE)
+
+| Подключиться | Протокол | Ответ Telegram, мс |
+| --- | --- | ---: |
+| [connect.0xl1r.cfd:853](tg://proxy?server=connect.0xl1r.cfd&port=853&secret=eea1f31ce5039ccb8331e906d5ab00a31777622e7275) | MTProto | 379 |
 
 ## США (US)
 
 | Подключиться | Протокол | Ответ Telegram, мс |
 | --- | --- | ---: |
-| [akenai.top:853](https://t.me/proxy?server=akenai.top&port=853&secret=ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b) | MTProto | 133 |
-| [cover-acid.top:853](https://t.me/proxy?server=cover-acid.top&port=853&secret=ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b) | MTProto | 150 |
-| [ctfd-is-shit.top:853](https://t.me/proxy?server=ctfd-is-shit.top&port=853&secret=ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b) | MTProto | 151 |
-| [espress0-macch1ato-p0r-favor3.top:853](https://t.me/proxy?server=espress0-macch1ato-p0r-favor3.top&port=853&secret=ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b) | MTProto | 155 |
-| [m4in-fr4mes-are-comp1ex-but-cut3.top:853](https://t.me/proxy?server=m4in-fr4mes-are-comp1ex-but-cut3.top&port=853&secret=ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b) | MTProto | 158 |
-| [forest.paperteapot.com:443](https://t.me/proxy?server=forest.paperteapot.com&port=443&secret=eed09fb30e9ba945e3eb272875413c8c94666f726573742e7061706572746561706f742e636f6d) | MTProto | 238 |
-| [russia.knox-proxy.world:4515](https://t.me/proxy?server=russia.knox-proxy.world&port=4515&secret=eee9a4f23b1d768c04a8d7f39120ca5b6e626973636f7474692e79656b74616e65742e636f6d) | MTProto | 239 |
-| [rain.paperteapot.com:443](https://t.me/proxy?server=rain.paperteapot.com&port=443&secret=eed09fb30e9ba945e3eb272875413c8c947261696e2e7061706572746561706f742e636f6d) | MTProto | 240 |
-| [orchid.paperteapot.com:443](https://t.me/proxy?server=orchid.paperteapot.com&port=443&secret=eed09fb30e9ba945e3eb272875413c8c946f72636869642e7061706572746561706f742e636f6d) | MTProto | 241 |
-| [aurora.paperteapot.com:443](https://t.me/proxy?server=aurora.paperteapot.com&port=443&secret=eed09fb30e9ba945e3eb272875413c8c946175726f72612e7061706572746561706f742e636f6d) | MTProto | 243 |
-| [opal.velvetwindow.cc:443](https://t.me/proxy?server=opal.velvetwindow.cc&port=443&secret=eed09fb30e9ba945e3eb272875413c8c946f70616c2e76656c76657477696e646f772e6363) | MTProto | 245 |
-| [olivesail.paperteapot.com:443](https://t.me/proxy?server=olivesail.paperteapot.com&port=443&secret=eed09fb30e9ba945e3eb272875413c8c946f6c6976657361696c2e7061706572746561706f742e636f6d) | MTProto | 246 |
-| [orchid.velvetwindow.cc:443](https://t.me/proxy?server=orchid.velvetwindow.cc&port=443&secret=eed09fb30e9ba945e3eb272875413c8c946f72636869642e76656c76657477696e646f772e6363) | MTProto | 246 |
-| [surge.proxylite.tech:443](https://t.me/proxy?server=surge.proxylite.tech&port=443&secret=eea2097057ad829da002992437ca0547e273757267652e70726f78796c6974652e74656368) | MTProto | 249 |
-| [valley.paperteapot.com:443](https://t.me/proxy?server=valley.paperteapot.com&port=443&secret=eed09fb30e9ba945e3eb272875413c8c9476616c6c65792e7061706572746561706f742e636f6d) | MTProto | 254 |
-| [warp.webproxy.lol:443](https://t.me/proxy?server=warp.webproxy.lol&port=443&secret=eecdd352e63c109299dc978b4e94fc4897776172702e77656270726f78792e6c6f6c) | MTProto | 263 |
-| [dunelumen.paperteapot.com:443](https://t.me/proxy?server=dunelumen.paperteapot.com&port=443&secret=eed09fb30e9ba945e3eb272875413c8c9464756e656c756d656e2e7061706572746561706f742e636f6d) | MTProto | 267 |
-| [tg.prxtg.top:443](https://t.me/proxy?server=tg.prxtg.top&port=443&secret=ee2d1bb45f31056d1063563fc6e38e5a1064726976652e676f6f676c652e636f6d) | MTProto | 279 |
-| [comet.velvetwindow.cc:443](https://t.me/proxy?server=comet.velvetwindow.cc&port=443&secret=eed09fb30e9ba945e3eb272875413c8c94636f6d65742e76656c76657477696e646f772e6363) | MTProto | 639 |
-| [156.229.164.62:5202](https://t.me/proxy?server=156.229.164.62&port=5202&secret=ee6ca8e315abf7fb512ec858e61679a9e8617a7572652e6d6963726f736f66742e636f6d) | MTProto | 680 |
-| [156.229.160.116:5203](https://t.me/proxy?server=156.229.160.116&port=5203&secret=eea09f796ed6891c5b7afb9d9019e9a350617a7572652e6d6963726f736f66742e636f6d) | MTProto | 687 |
-| [156.229.167.222:5201](https://t.me/proxy?server=156.229.167.222&port=5201&secret=ee3a51554a1c8542cc36572fd59c2f63f4617a7572652e6d6963726f736f66742e636f6d) | MTProto | 706 |
+| [fast.love-internet.xyz:4515](tg://proxy?server=fast.love-internet.xyz&port=4515&secret=eee9a4f23b1d768c04a8d7f39120ca5b6e626973636f7474692e79656b74616e65742e636f6d) | MTProto | 231 |
+| [dedicated.love-internet.xyz:4515](tg://proxy?server=dedicated.love-internet.xyz&port=4515&secret=eee9a4f23b1d768c04a8d7f39120ca5b6e626973636f7474692e79656b74616e65742e636f6d) | MTProto | 243 |
+| [ruby.velvetwindow.cc:443](tg://proxy?server=ruby.velvetwindow.cc&port=443&secret=eed09fb30e9ba945e3eb272875413c8c94727562792e76656c76657477696e646f772e6363) | MTProto | 246 |
+| [gram.prxtg.top:443](tg://proxy?server=gram.prxtg.top&port=443&secret=eeabde1be2accd3413ec8e8a0fa256287f64726976652e676f6f676c652e636f6d) | MTProto | 260 |
+| [216.36.108.1:5201](tg://proxy?server=216.36.108.1&port=5201&secret=ee497495a13920f0f753e80925c6f9c840617a7572652e6d6963726f736f66742e636f6d) | MTProto | 679 |
+| [156.229.160.116:5203](tg://proxy?server=156.229.160.116&port=5203&secret=eea09f796ed6891c5b7afb9d9019e9a350617a7572652e6d6963726f736f66742e636f6d) | MTProto | 682 |
