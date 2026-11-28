@@ -46,3 +46,4 @@ htmlcov/
 # Verification output
 /verified/*
 !/verified/proxy_report.md
+!/verified/proxy_all.txt

@@ -29,7 +29,7 @@ fi
     --markdown-report
 
 report_path=verified/proxy_report.md
-git add -- "$report_path"
+git add -- "verified/"
 if git diff --cached --quiet -- "$report_path"; then
     printf '%s\n' 'Отчёт совпадает с последним коммитом.'
 else

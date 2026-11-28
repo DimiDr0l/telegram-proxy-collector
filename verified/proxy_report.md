@@ -6,7 +6,7 @@
 
 | Подключиться | Протокол | Ответ Telegram, мс |
 | --- | --- | ---: |
-| [My.fastprx.co.uk:2052](tg://proxy?server=My.fastprx.co.uk&port=2052&secret=aea1191522c9b281d2633610a34e730d) | MTProto | 110 |
+| [tg://proxy?server=My.fastprx.co.uk&port=2052&secret=aea1191522c9b281d2633610a34e730d](tg://proxy?server=My.fastprx.co.uk&port=2052&secret=aea1191522c9b281d2633610a34e730d) | MTProto | 110 |
 | [radical.pushinero.info:5500](tg://proxy?server=radical.pushinero.info&port=5500&secret=d88db99ee3721f0fcb40a4ff63b5cd28) | MTProto | 110 |
 | [professor.hasratepaeiz.website:7070](tg://proxy?server=professor.hasratepaeiz.website&port=7070&secret=88e462779949db7ec888130660c40c77) | MTProto | 113 |
 | [a5.anotelinopalk.co.uk:8880](tg://proxy?server=a5.anotelinopalk.co.uk&port=8880&secret=eeNEgYdJvXrFGRMCIMJdCQ) | MTProto | 115 |
