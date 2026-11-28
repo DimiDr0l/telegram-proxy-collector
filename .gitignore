@@ -1,57 +1,48 @@
-# Python
+# macOS
+.DS_Store
+.AppleDouble/
+.LSOverride
+._*
+.Spotlight-V100/
+.Trashes/
+.fseventsd/
+.TemporaryItems/
+
+# Python and virtual environments
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+/venv/
+/.venv/
+/build/
+/dist/
+*.egg-info/
 
-# Session files
-*.session
-*.session-journal
-test_*
-channel_reader_session*
-
-# Local data
-data/*.csv
-data/*.json
-data/*.mmdb
-
-# IDE
+# Tests and local tooling
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
 .vscode/
 .idea/
-.DS_Store
-Thumbs.db
 
-# Build
-*.pyc
-build/
-dist/
-*.spec
+# Local configuration and Telegram sessions
+.env
+.env.*
+!.env.example
+*.session
+*.session-journal
+*.session-shm
+*.session-wal
 
-# Verified output
-verified/
-*.txt
-!proxy_ru.txt
-!proxy_eu.txt
-!proxy_all.txt
-!socks5.txt
+# Downloaded data
+/data/*.csv
+/data/*.json
+/data/*.mmdb
 
-# Configs
-config.yml
-domains.txt
-whitelist_sni.txt
-tcp16.json
-
-# Requirements & project files - явные исключения
-!*.py
-!*.md
-!*.yml
-!*.yaml
-!*.txt
-!requirements.txt
-!.gitignore
-!.github/
-!README.md
-!main.py
-!mobile.html
-!index.html
-!LICENSE
+# Verification output
+/verified/*
+!/verified/proxy_report.md

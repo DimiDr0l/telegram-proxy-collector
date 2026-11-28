@@ -16,6 +16,7 @@ import concurrent.futures
 import time
 import random
 from datetime import datetime, timezone
+from html import escape
 import json
 import os
 import argparse
@@ -108,33 +109,17 @@ SOURCES = [
     "https://raw.githubusercontent.com/SoliSpirit/mtproto/master/all_proxies.txt",
     "https://raw.githubusercontent.com/Grim1313/mtproto-for-telegram/refs/heads/master/all_proxies.txt",
     "https://raw.githubusercontent.com/ALIILAPRO/MTProtoProxy/main/mtproto.txt",
-    "https://mtpro.xyz/api/?type=mtproto",
-    "https://mtpro.xyz/api/?type=mtproto-ru",
-    "https://raw.githubusercontent.com/hookzof/socks5_list/master/tg/mtproto.txt",
-    "https://raw.githubusercontent.com/Freedom-Guard/Proxy/main/proxies/mtproto.txt",
-    "https://raw.githubusercontent.com/securemanager/MTPROTO/main/proxies.txt",
-    "https://raw.githubusercontent.com/seriyps/mtproto_proxy/master/proxies.txt",
-    "https://raw.githubusercontent.com/MTProto/MTProtoProxy/master/proxies/mtproto.txt",
-    "https://raw.githubusercontent.com/mtProtoProxy/MTProxy-official/master/proxies.txt",
-    "https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/TELEGRAM_PROXY_SUB/refs/heads/main/telegram_proxy_no1.txt",
-    "https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/TELEGRAM_PROXY_SUB/refs/heads/main/telegram_proxy_no2.txt",
-    "https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/TELEGRAM_PROXY_SUB/refs/heads/main/telegram_proxy_no3.txt",
-    "https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/TELEGRAM_PROXY_SUB/refs/heads/main/telegram_proxy_no4.txt",
-    "https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/TELEGRAM_PROXY_SUB/refs/heads/main/telegram_proxy_no5.txt",
-    "https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/TELEGRAM_PROXY_SUB/refs/heads/main/telegram_proxy_no6.txt",
-    "https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/TELEGRAM_PROXY_SUB/refs/heads/main/telegram_proxy_no7.txt",
-    "https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/TELEGRAM_PROXY_SUB/refs/heads/main/telegram_proxy_no8.txt",
-    "https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/TELEGRAM_PROXY_SUB/refs/heads/main/telegram_proxy_no9.txt",
-    "https://raw.githubusercontent.com/V2RAYCONFIGSPOOL/TELEGRAM_PROXY_SUB/refs/heads/main/telegram_proxy_no10.txt",
+    "https://mhditaheri.github.io/ProxyCollector/proxy.txt",
+    "https://raw.githubusercontent.com/ALIILAPRO/MTProtoProxy/refs/heads/main/mtproto.txt",
+    "https://raw.githubusercontent.com/kort0881/telegram-proxy-collector/refs/heads/main/proxy_all.txt",
+    "https://raw.githubusercontent.com/Maxsool/MTProxyCollector/refs/heads/main/proxy.txt",
     "https://raw.githubusercontent.com/Surfboardv2ray/TGProto/refs/heads/main/proxies.txt",
-    "https://raw.githubusercontent.com/iwh3n/tg-proxy/refs/heads/main/proxys/All_Proxys.txt",
     "https://raw.githubusercontent.com/kubiknubika/my-tg-proxies/refs/heads/main/data/proxies.json",
     "https://raw.githubusercontent.com/shablin/mtproto-proxy/refs/heads/main/data/valid_proxy.json",
     "https://raw.githubusercontent.com/helptmoop/Free-Telegram-Proxies/refs/heads/main/global-iran-russia-proxies.txt",
     "https://raw.githubusercontent.com/helptmoop/Free-Telegram-Proxies/refs/heads/main/turkmenistan-global-iran-russia.txt",
     "https://raw.githubusercontent.com/Argh94/Proxy-List/refs/heads/main/MTProto.txt",
     "https://raw.githubusercontent.com/McDaived/ProxyDaiv/refs/heads/main/public/proxies.json",
-    "https://raw.githubusercontent.com/klondike0x/mtp4tg-proxies/refs/heads/main/all_proxies.txt",
     "https://raw.githubusercontent.com/weltimistar777-crypto/MTProxy/refs/heads/main/proxy.txt",
     "https://raw.githubusercontent.com/Therealwh/MTPproxyLIST/refs/heads/main/verified/proxy_all_verified.txt",
     "https://raw.githubusercontent.com/Therealwh/MTPproxyLIST/refs/heads/main/verified/proxy_all_tme_verified.txt",
@@ -145,7 +130,6 @@ SOURCES = [
     "https://moonlunavpn.com/proxies.txt",
     "https://moonlunavpn.com/proxies.json",
     "https://tgmtproxy.github.io/mtproxy/proxies.txt",
-    "https://tgmtproxy.github.io/mtproxy/proxies.json",
 ]
 
 SOCKS_SOURCES = [
@@ -153,6 +137,7 @@ SOCKS_SOURCES = [
     "https://raw.githubusercontent.com/kort0881/telegram-proxy-collector/main/socks5.txt",
 
     # --- внешние ---
+    "https://raw.githubusercontent.com/hookzof/socks5_list/refs/heads/master/proxy.txt",
     "https://raw.githubusercontent.com/hookzof/socks5_list/master/proxy.txt",
     "https://api.proxyscrape.com/v2/?request=displayproxies&protocol=socks5&timeout=5000&country=all",
     "https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/socks5.txt",
@@ -215,17 +200,20 @@ def _load_geoip(path: str):
             print(f'⚠️ geoip2.Reader не сработал: {e}')
     return None
 
-def _geo_country(host: str) -> Optional[str]:
+def _geo_country(address: str) -> Optional[Tuple[str, str]]:
     if geoip_reader is None:
         return None
     try:
-        info = geoip_reader.get(host)
-        if not info:
-            return None
         if GEOIP_MODE == 'maxminddb':
-            return (info.get('country') or {}).get('iso_code')
-        if GEOIP_MODE == 'geoip2':
-            return info.country.iso_code if info.country else None
+            country = (geoip_reader.get(address) or {}).get('country') or {}
+            code, names = country.get('iso_code'), country.get('names') or {}
+        elif GEOIP_MODE == 'geoip2':
+            country = geoip_reader.country(address).country
+            code, names = country.iso_code, country.names
+        else:
+            return None
+        if code:
+            return code.upper(), names.get('ru') or names.get('en') or code.upper()
     except Exception:
         return None
     return None
@@ -308,11 +296,9 @@ def check_proxy_tcp(p: Tuple[str, str, int, Any], timeout: float) -> Optional[Di
     if typ == 'mtproto' and port in SUSPICIOUS_PORTS and p not in MANUAL_KEYS:
         return None
 
-    country = None
-    if geoip_reader is not None:
-        country = _geo_country(host)
-        if country and country.upper() not in ALLOWED_COUNTRIES:
-            return None
+    country = _geo_country(host)
+    if country and country[0] not in ALLOWED_COUNTRIES:
+        return None
 
     proxy_secret = None
     credentials = (None, None)
@@ -325,10 +311,6 @@ def check_proxy_tcp(p: Tuple[str, str, int, Any], timeout: float) -> Optional[Di
         if any(blocked in domain for blocked in BLOCKED):
             return None
         link = f'tg://proxy?server={host}&port={port}&secret={extra}'
-        if domain:
-            region = _detect_region(domain)
-        else:
-            region = _region_from_country(country)
         domain_str = domain
     elif typ == 'socks5':
         link = f'tg://socks?server={host}&port={port}'
@@ -339,22 +321,30 @@ def check_proxy_tcp(p: Tuple[str, str, int, Any], timeout: float) -> Optional[Di
             link += f'&user={quote(user, safe="")}'
             if password is not None:
                 link += f'&pass={quote(password, safe="")}'
-        region = _region_from_country(country)
         domain_str = ''
     else:
         return None
 
     try:
         start = time.monotonic()
-        with socket.create_connection((host, port), timeout=timeout):
+        with socket.create_connection((host, port), timeout=timeout) as connection:
             ping = round(time.monotonic() - start, 3)
+            if geoip_reader is not None and country is None:
+                country = _geo_country(connection.getpeername()[0])
+                if country and country[0] not in ALLOWED_COUNTRIES:
+                    return None
+        start = time.monotonic()
         if not check_telegram_proxy(host, port, timeout, secret=proxy_secret, credentials=credentials):
             return None
+        response_time = time.monotonic() - start
+        country_code, country_name = country or (None, None)
+        region = _detect_region(domain_str) if domain_str else _region_from_country(country_code)
         return {
             'type': typ, 'host': host, 'port': port,
             'secret': extra if typ == 'mtproto' else None,
             'link': link, 'ping': ping, 'region': region,
             'domain': domain_str, 'probe_resistant': False,
+            'country_code': country_code, 'country_name': country_name, 'response_time': response_time,
         }
     except (socket.timeout, socket.error, OSError, TypeError):
         return None
@@ -373,6 +363,89 @@ def deduplicate_and_sort(proxies: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     ))
     return unique
 
+def _report_groups(proxies: List[Dict[str, Any]], top: int):
+    countries: Dict[Optional[str], List[Dict[str, Any]]] = {}
+    for proxy in proxies:
+        countries.setdefault(proxy['country_code'], []).append(proxy)
+
+    groups = []
+    for code in sorted(countries, key=lambda code: (code is None, code or '')):
+        ranked = sorted(countries[code], key=lambda proxy: (
+            proxy['response_time'], proxy['host'], proxy['port'], proxy['link'],
+        ))
+        name = ranked[0]['country_name']
+        label = f'{name} ({code})' if name and name != code else code or 'Страна не определена'
+        rows = []
+        for proxy in ranked[:top]:
+            host = proxy['host']
+            endpoint = f'[{host}]:{proxy["port"]}' if ':' in host else f'{host}:{proxy["port"]}'
+            protocol = 'MTProto' if proxy['type'] == 'mtproto' else 'SOCKS5'
+            rows.append((endpoint, proxy['link'], protocol, round(proxy['response_time'] * 1000)))
+        groups.append((label, rows))
+    return groups
+
+def write_html_report(path: str, groups, utc: datetime):
+    with open(path, 'w', encoding='utf-8') as report:
+        report.write('''<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Проверенные прокси Telegram</title>
+<style>
+  :root { color-scheme: light dark; font: 16px/1.5 system-ui, sans-serif; }
+  body { max-width: 52rem; margin: 0 auto; padding: 1.5rem 1rem; }
+  section { margin-block: 2rem; }
+  h1, h2 { line-height: 1.2; }
+  table { width: 100%; table-layout: fixed; border-collapse: collapse; text-align: left; }
+  th, td { padding: .5rem .25rem; border-bottom: 1px solid GrayText; overflow-wrap: anywhere; }
+  th:first-child { width: 50%; }
+  :is(th, td):last-child { text-align: right; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<main>
+<h1>Проверенные прокси Telegram</h1>
+''')
+        report.write(f'<p>Проверено <time datetime="{utc.isoformat()}">{utc:%Y-%m-%d %H:%M:%S} UTC</time></p>\n')
+        if not groups:
+            report.write('<p>Рабочие прокси не найдены.</p>\n')
+
+        for label, rows in groups:
+            report.write(f'<section>\n<h2>{escape(label)}</h2>\n<table>\n'
+                         '<thead><tr><th scope="col">Подключиться</th><th scope="col">Протокол</th>'
+                         '<th scope="col">Ответ Telegram, мс</th></tr></thead>\n<tbody>\n')
+            for endpoint, link, protocol, milliseconds in rows:
+                report.write(f'<tr><td><a href="{escape(link)}">{escape(endpoint)}</a></td>'
+                             f'<td>{protocol}</td><td>{milliseconds}</td></tr>\n')
+            report.write('</tbody>\n</table>\n</section>\n')
+        report.write('</main>\n</body>\n</html>\n')
+
+def _escape_markdown(text: str) -> str:
+    return re.sub(r'[\\\[\]_*<>|&#~`]', lambda match: '\\' + match.group(), ' '.join(text.splitlines()))
+
+def write_markdown_report(path: str, groups, utc: datetime):
+    with open(path, 'w', encoding='utf-8') as report:
+        report.write(f'# Проверенные прокси Telegram\n\nПроверено {utc:%Y-%m-%d %H:%M:%S} UTC\n')
+        if not groups:
+            report.write('\nРабочие прокси не найдены.\n')
+
+        for label, rows in groups:
+            report.write(f'\n## {_escape_markdown(label)}\n\n'
+                         '| Подключиться | Протокол | Ответ Telegram, мс |\n'
+                         '| --- | --- | ---: |\n')
+            for endpoint, link, protocol, milliseconds in rows:
+                url = 'https://t.me/' + link.removeprefix('tg://')
+                url = quote(url, safe=':/?&=%')
+                report.write(f'| [{_escape_markdown(endpoint)}]({url}) | {protocol} | {milliseconds} |\n')
+
+def _write_reports(output_dir, report_writers, proxies, top, utc):
+    groups = _report_groups(proxies, top)
+    for extension, writer in report_writers:
+        path = os.path.join(output_dir, f'proxy_report.{extension}')
+        writer(path, groups, utc)
+        print(f'💾 Отчёт: {path}')
+
 def load_local_proxies(file_path: str, *, include_socks: bool = True) -> Set[Tuple[str, str, int, Any]]:
     if not os.path.isfile(file_path):
         return set()
@@ -390,21 +463,28 @@ MANUAL_KEYS = get_proxies_from_text('\n'.join(MANUAL_PROXIES))
 
 # ---------- MAIN ----------
 def run(args):
-    global geoip_reader
+    global geoip_reader, GEOIP_MODE
 
     include_socks = not getattr(args, 'skip_socks', False)
+    report_writers = []
+    if getattr(args, 'html_report', False):
+        report_writers.append(('html', write_html_report))
+    if getattr(args, 'markdown_report', False):
+        report_writers.append(('md', write_markdown_report))
     start_time = time.time()
     print('🚀 MTProxy Collector v4.2')
     print('=' * 48)
 
-    if args.geoip and os.path.exists(args.geoip):
-        geoip_reader = _load_geoip(args.geoip)
+    geoip_path = args.geoip or ('data/GeoLite2-Country.mmdb' if report_writers else None)
+    geoip_reader = GEOIP_MODE = None
+    if geoip_path and os.path.isfile(geoip_path):
+        geoip_reader = _load_geoip(geoip_path)
         if geoip_reader is not None:
-            print(f"✅ geoip.dat загружен ({GEOIP_MODE}) из {args.geoip}")
+            print(f"✅ GeoIP загружен ({GEOIP_MODE}) из {geoip_path}")
         else:
-            print("⚠️ Не удалось загрузить geoip.dat, проверка по стране отключена")
+            print("⚠️ Не удалось загрузить базу GeoIP, проверка по стране отключена")
     else:
-        print("⚠️ geoip.dat не указан или не найден, проверка по стране отключена.")
+        print("⚠️ База GeoIP не указана или не найдена, проверка по стране отключена.")
 
     os.makedirs(args.output_dir, exist_ok=True)
 
@@ -454,6 +534,8 @@ def run(args):
 
     print(f'\n🧩 Уникальных прокси всего: {len(all_raw)}')
     if include_socks and not all_raw:
+        if report_writers and not args.dry_run:
+            _write_reports(args.output_dir, report_writers, [], 0, datetime.now(timezone.utc))
         print('\n⚠️ Нет прокси. Завершение.')
         return
 
@@ -534,6 +616,9 @@ def run(args):
         for p in domain_proxies:
             f.write(f"{p['link']} # domain: {p['domain']}\n")
 
+    if report_writers:
+        _write_reports(args.output_dir, report_writers, valid, top, utc)
+
     elapsed = round(time.time() - start_time, 1)
     print('=' * 48)
     summary = f'✅ MTProto RU: {len(mtproto_ru)}  EU: {len(mtproto_eu)}  US: {len(mtproto_us)}  ASIA: {len(mtproto_asia)}'
@@ -558,6 +643,8 @@ def main():
     parser.add_argument('--geoip', type=str)
     parser.add_argument('--max-check', type=int, default=30000)
     parser.add_argument('--skip-socks', action='store_true', help='Skip SOCKS5 sources and exclude SOCKS5 proxies from verification and reports')
+    parser.add_argument('--html-report', action='store_true', help='Write proxy_report.html grouped by GeoIP country and ranked by Telegram response time')
+    parser.add_argument('--markdown-report', action='store_true', help='Write proxy_report.md grouped by GeoIP country and ranked by Telegram response time')
     parser.add_argument('--dry-run', action='store_true', help='Only collect and parse proxies, skip network verification')
     args = parser.parse_args()
     run(args)

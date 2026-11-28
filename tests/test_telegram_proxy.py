@@ -7,7 +7,7 @@ from argparse import Namespace
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 import main
 from telegram_proxy import MTProxySecret, check_telegram_proxy
@@ -143,6 +143,23 @@ def test_collector_requires_protocol_check_after_tcp_ping():
         check.assert_called_with('proxy.example', 1080, 2, secret=None, credentials=('u@', 'p!'))
 
 
+def test_proxy_country_uses_connected_ip_and_times_telegram_reply_separately():
+    reader = Mock()
+    reader.country.side_effect = [ValueError, Mock(country=Mock(iso_code='DE', names={'ru': 'Германия'}))]
+    proxy = ('mtproto', 'proxy.example', 443, KEY.hex())
+    with patch.multiple(main, geoip_reader=reader, GEOIP_MODE='geoip2'), \
+            patch('main.socket.create_connection') as connect, \
+            patch('main.check_telegram_proxy', return_value=True), \
+            patch('main.time.monotonic', side_effect=[1.0, 1.025, 2.0, 2.125]):
+        connect.return_value.__enter__.return_value.getpeername.return_value = ('192.0.2.1', 443)
+        result = main.check_proxy_tcp(proxy, 2)
+
+    assert [call.args[0] for call in reader.country.call_args_list] == ['proxy.example', '192.0.2.1']
+    assert (result['country_code'], result['country_name']) == ('DE', 'Германия')
+    assert result['ping'] == 0.025
+    assert result['response_time'] == 0.125
+
+
 def test_run_replaces_previous_list_when_no_proxy_passes():
     hosts = ('good.example', 'bad.example')
     links = [f'tg://proxy?server={host}&port=443&secret={KEY.hex()}' for host in hosts]
@@ -204,3 +221,67 @@ def test_skip_socks_filters_all_inputs_and_replaces_previous_report():
                 main.main()
             connect.assert_not_called()
             assert 'tg://' not in verified_list.read_text()
+
+
+def test_reports_group_countries_and_rank_by_telegram_response():
+    proxies = {}
+    for host, protocol, code, name, response_time, ping in (
+        ('slow.example', 'mtproto', 'DE', 'Германия', 0.24, 0.01),
+        ('fast.example', 'socks5', 'DE', 'Германия', 0.035, 0.02),
+        ('other.example', 'mtproto', 'NL', 'Нидерланды', 0.10, 0.06),
+        ('unknown.example', 'mtproto', None, None, 0.005, 0.003),
+    ):
+        if protocol == 'mtproto':
+            port, secret = 443, KEY.hex()
+            link = f'tg://proxy?server={host}&port={port}&secret={secret}'
+        else:
+            port, secret = 1080, None
+            link = f'tg://socks?server={host}&port={port}&user=u%40&pass=p%21'
+        proxies[host] = dict(
+            type=protocol, host=host, port=port, secret=secret, region='eu', link=link,
+            country_code=code, country_name=name, response_time=response_time, ping=ping,
+        )
+
+    with TemporaryDirectory() as tmp, patch.multiple(
+        main, SOURCES=[], SOCKS_SOURCES=[], MANUAL_PROXIES=[p['link'] for p in proxies.values()],
+    ), patch('main.check_proxy_tcp', side_effect=lambda proxy, timeout: proxies[proxy[1]]):
+        argv = ['main.py', '--markdown-report', '--output-dir', tmp, '--workers', '1',
+                '--geoip', str(Path(tmp) / 'absent.mmdb')]
+        html_path = Path(tmp) / 'proxy_report.html'
+        markdown_path = Path(tmp) / 'proxy_report.md'
+        with patch('sys.argv', argv):
+            main.main()
+        assert not html_path.exists()
+        markdown = markdown_path.read_text(encoding='utf-8')
+        assert '## Германия (DE)' in markdown
+        assert '| [fast.example:1080](https://t.me/socks?server=fast.example&port=1080&user=u%40&pass=p%21) | SOCKS5 | 35 |' in markdown
+        assert f'| [slow.example:443](https://t.me/proxy?server=slow.example&port=443&secret={KEY.hex()}) | MTProto | 240 |' in markdown
+
+        argv.append('--html-report')
+        with patch('sys.argv', argv):
+            main.main()
+        html = html_path.read_text(encoding='utf-8')
+        for report in (html, markdown_path.read_text(encoding='utf-8')):
+            assert report.index('Германия (DE)') < report.index('fast.example:1080') < report.index('slow.example:443')
+            assert report.index('slow.example:443') < report.index('Нидерланды (NL)') < report.index('other.example:443')
+            assert report.index('other.example:443') < report.index('Страна не определена') < report.index('unknown.example:443')
+        assert 'href="tg://socks?server=fast.example&amp;port=1080&amp;user=u%40&amp;pass=p%21"' in html
+        assert f'href="tg://proxy?server=slow.example&amp;port=443&amp;secret={KEY.hex()}"' in html
+        assert '<td>35</td>' in html
+
+        with patch('sys.argv', argv + ['--top', '1']):
+            main.main()
+        for path in (html_path, markdown_path):
+            report = path.read_text(encoding='utf-8')
+            assert 'slow.example' not in report
+            assert all(endpoint in report for endpoint in ('fast.example:1080', 'other.example:443', 'unknown.example:443'))
+
+        with patch('sys.argv', argv + ['--skip-socks']):
+            main.main()
+        assert 'tg://socks' not in html_path.read_text(encoding='utf-8')
+        assert 'https://t.me/socks?' not in markdown_path.read_text(encoding='utf-8')
+
+        with patch('sys.argv', argv), patch('main.MANUAL_PROXIES', []):
+            main.main()
+        for path in (html_path, markdown_path):
+            assert 'Рабочие прокси не найдены.' in path.read_text(encoding='utf-8')
