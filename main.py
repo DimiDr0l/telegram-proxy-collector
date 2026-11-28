@@ -111,7 +111,6 @@ SOURCES = [
     "https://raw.githubusercontent.com/ALIILAPRO/MTProtoProxy/main/mtproto.txt",
     "https://mhditaheri.github.io/ProxyCollector/proxy.txt",
     "https://raw.githubusercontent.com/ALIILAPRO/MTProtoProxy/refs/heads/main/mtproto.txt",
-    "https://raw.githubusercontent.com/kort0881/telegram-proxy-collector/refs/heads/main/proxy_all.txt",
     "https://raw.githubusercontent.com/Maxsool/MTProxyCollector/refs/heads/main/proxy.txt",
     "https://raw.githubusercontent.com/Surfboardv2ray/TGProto/refs/heads/main/proxies.txt",
     "https://raw.githubusercontent.com/kubiknubika/my-tg-proxies/refs/heads/main/data/proxies.json",
@@ -123,7 +122,6 @@ SOURCES = [
     "https://raw.githubusercontent.com/weltimistar777-crypto/MTProxy/refs/heads/main/proxy.txt",
     "https://raw.githubusercontent.com/Therealwh/MTPproxyLIST/refs/heads/main/verified/proxy_all_verified.txt",
     "https://raw.githubusercontent.com/Therealwh/MTPproxyLIST/refs/heads/main/verified/proxy_all_tme_verified.txt",
-    "https://raw.githubusercontent.com/Airuop/MTProtoCollector/refs/heads/main/proxy/mtproto.json",
     "https://raw.githubusercontent.com/blog1703/tgonline/refs/heads/main/proxies.txt",
     # из issue #40 (VestraNet-Nodes, 310 прокси на 18.11)
     "https://raw.githubusercontent.com/MustafaBaqer/VestraNet-Nodes/refs/heads/main/protocols/mtproto.txt",
@@ -145,7 +143,6 @@ SOCKS_SOURCES = [
     "https://raw.githubusercontent.com/fyvri/fresh-proxy-list/archive/storage/classic/socks5.txt",
     "https://gist.githubusercontent.com/December000/fd23d2530ffc29264297a5e687a79ecd/raw/all.yaml",
     "https://raw.githubusercontent.com/CB-X2-Jun/proxy-lists/main/proxy.txt",
-    "https://raw.githubusercontent.com/CB-X2-Jun/proxy-lists/main/public/proxies.json",
     "https://raw.githubusercontent.com/ProxyScrape/free-proxy-list/refs/heads/main/proxies/all/data.txt",
 ]
 
